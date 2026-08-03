@@ -1,0 +1,60 @@
+s:
+      - uses: actions/checkout@v4
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+On github.com, create a new empty repo (no README/gitignore/license — you already have those locally) named devops (or whatever you like). Then:
+
+cd C:\Users\kanga\Deskt
+git add .
+git commit -m "Initial ckerfile"
+git branch -M main
+git remote add origin hame>/<repo-name>.git
+git push -u origin main
+
+Step 2 — Create the workflow file
+
+Create the folder struc file ci.yml inside it:
+
+mkdir .github\workflows
+notepad .github\workflows\ci.yml
+
+Paste this in:
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/s
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run tests
+        run: pytest -v
+
+  docker-build:
+    runs-on: ubuntu-lat
+    needs: test
+    steps:
+      - uses: actions/c
+
+      - name: Build Docker image
+        run: docker build -t task-tracker:latest .
