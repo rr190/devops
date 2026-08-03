@@ -23,7 +23,7 @@ jobs:
         run: pytest -v
 
   docker-build:
-    runs-on: ubuntu-lat
+    runs-on: ubuntu-latest
     needs: test
     steps:
       - uses: actions/checkout@v4
