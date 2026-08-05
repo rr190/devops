@@ -24,7 +24,7 @@ flowchart TD
     M --> N[Email]
 ```
 
-All AWS infrastructure inside the pipeline (VPC, ALB, ECS Fargate service, CloudWatch, SNS) is defined declaratively in [`infra/main.tf`](infra/main.tf) and provisioned with Terraform — nothing was created by hand in the AWS console.
+All AWS infrastructure inside the pipeline (VPC, ALB, ECS Fargate service, CloudWatch, SNS) is defined declaratively in [`infra/main.tf`](infra/main.tf) and provisioned with Terraform.
 
 ## Stack
 
@@ -40,7 +40,7 @@ All AWS infrastructure inside the pipeline (VPC, ALB, ECS Fargate service, Cloud
 ## How it works
 
 1. Every push/PR runs the test suite and validates the Docker image builds (`.github/workflows/ci.yml`).
-2. Merging to `main` additionally builds and pushes the image to ECR (tagged `:latest` and by commit SHA), then forces ECS to roll out the new version behind the load balancer — zero manual steps.
+2. Merging to `main` additionally builds and pushes the image to ECR (tagged `:latest` and by commit SHA), then forces ECS to roll out the new version behind the load balancer.
 3. The ALB's target group health feeds a CloudWatch alarm; if the running container fails its `/health` check, an SNS topic emails a notification.
 
 ## Running locally
@@ -62,7 +62,7 @@ terraform init
 terraform apply
 ```
 
-Outputs the public ALB URL. **Run `terraform destroy` when done** — the ALB and Fargate task bill hourly regardless of traffic.
+Outputs the public ALB URL. **Run `terraform destroy` when done**, the ALB and Fargate task bill hourly regardless of traffic.
 
 ## Known limitations / next steps
 
