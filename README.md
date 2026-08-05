@@ -1,6 +1,6 @@
 # task-tracker
 
-A minimal Flask task-tracker API, deployed through a complete CI/CD pipeline to AWS. The app itself is intentionally simple — this project is a demonstration of the pipeline around it: automated testing, containerization, infrastructure as code, continuous deployment, and monitoring.
+A minimal Flask task-tracker API, deployed through a complete CI/CD pipeline to AWS. The app itself is intentionally simple. This project is a demonstration of the pipeline around it: automated testing, containerization, infrastructure as code, continuous deployment, and monitoring.
 
 ![CI](https://github.com/rr190/devops/actions/workflows/ci.yml/badge.svg)
 
